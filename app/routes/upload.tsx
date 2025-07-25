@@ -3,6 +3,7 @@ import { convertPdfToImage } from 'lib/pdfToImage';
 import { usePuterStore } from 'lib/puter';
 import { generateUUID } from 'lib/utils';
 import { useState, type FormEvent } from 'react';
+import { useNavigate } from 'react-router';
 import FileUploader from '~/components/FileUploader';
 import Navbar from '~/components/Navbar';
 
@@ -11,6 +12,7 @@ const Upload = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [statusTexts, setStatusTexts] = useState('');
   const [file, setFile] = useState<File | null>(null);
+  const navigate=useNavigate()
 
   const handleFileSelect = (file: File | null): void => {
     setFile(file);
@@ -71,7 +73,7 @@ data.feedback = typeof feedbackContent === 'string' ? JSON.parse(feedbackContent
 
       await kv.set(`resume:${uuid}`, JSON.stringify(data));
       setStatusTexts('Analysis complete, redirected');
-      console.log(data);
+navigate(`/resume/${uuid}`)
     } catch (error) {
       console.error(error);
       setStatusTexts('Unexpected error occurred');
