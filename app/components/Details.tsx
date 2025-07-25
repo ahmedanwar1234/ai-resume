@@ -47,7 +47,7 @@ const CategoryHeader = ({
   categoryScore: number;
 }) => {
   return (
-    <div className="flex flex-row gap-4 items-center py-2">
+    <div className="flex flex-row  gap-4 items-center py-2">
       <p className="text-2xl font-semibold">{title}</p>
       <ScoreBadge score={categoryScore} />
     </div>
@@ -61,7 +61,7 @@ const CategoryContent = ({
 }) => {
   return (
     <div className="flex flex-col gap-4 items-center w-full">
-      <div className="bg-gray-50 w-full rounded-lg px-5 py-4 grid grid-cols-2 gap-4">
+      <div className="bg-gray-50 w-full  rounded-lg px-5 py-4 max-sm:flex max-sm:flex-col grid grid-cols-2 gap-4">
         {tips.map((tip, index) => (
           <div className="flex flex-row gap-2 items-center" key={index}>
             <img
